@@ -6,18 +6,18 @@
     <title>Events - Kairos</title>
 </head>
 <body>
-    <h1>Events</h1>
+    <h1>Eventos</h1>
 
-    <a href="create.html">Add Event</a>
+    <a href="{{route('events.create')}}">Cadastro de Eventos</a>
 
    <table>
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Start Date</th>
-            <th>Location</th>
+            <th>Titulo</th>
+            <th>Data Inicial</th>
+            <th>Data de Termino</th>
             <th>Status</th>
-            <th>Actions</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -28,8 +28,7 @@
                 <td>{{ $event->location }}</td>
                 <td>{{ ucfirst($event->status) }}</td>
                 <td>
-                    <a href="">View</a>
-                    <a href="">Edit</a>
+                    <a href="">Editar</a>
                 </td>
             </tr>
         @endforeach
