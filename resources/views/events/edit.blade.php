@@ -9,8 +9,9 @@
     <h1>Edição do Evento</h1>
 
     <form action="{{ route('events.update', $event->id) }}" method="POST">
-        @method("put")
         @csrf
+        @method("put")
+      
         
         <label>Nome:</label><br>
         <input type="text" name="title" value="{{ $event->title }}" required><br><br>
