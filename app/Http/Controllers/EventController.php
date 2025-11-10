@@ -47,7 +47,8 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view("events.edit", compact("event"));
     }
 
     /**
@@ -55,7 +56,9 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $event->update($request->all());
+        return redirect()->route("events.index");
     }
 
     /**

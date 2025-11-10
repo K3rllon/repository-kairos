@@ -28,7 +28,7 @@
                 <td>{{ $event->location }}</td>
                 <td>{{ ucfirst($event->status) }}</td>
                 <td>
-                    <a href="">Editar</a>
+                    <a href="{{route('events.edit', $event->id)}}">Editar</a>
                 </td>
             </tr>
         @endforeach
