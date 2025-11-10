@@ -8,4 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get("/events", [EventController::class, "index"])->name("events.index");
-Route::get("/events/create", [EventController::class, "create"])->name("events.crete");
+Route::get("/events/create", [EventController::class, "create"])->name("events.create");
+Route::post("/events", [EventController::class, "store"])->name("events.store");
