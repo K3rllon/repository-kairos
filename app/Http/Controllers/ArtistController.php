@@ -38,7 +38,7 @@ class ArtistController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(no $no)
+    public function show($id)
     {
         //
     }
@@ -46,23 +46,26 @@ class ArtistController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(no $no)
+    public function edit($id)
     {
-        //
+        $artist = Artist::findOrFail($id);
+        return view("artists.edit", compact("artist"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, no $no)
+    public function update(Request $request, $id)
     {
-        //
+        $artist = Artist::findOrFail($id);
+        $artist->update($request->all());
+        return redirect()->route("artists.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(no $no)
+    public function destroy($id)
     {
         //
     }
