@@ -18,3 +18,5 @@ Route::delete("/events/{event}", [EventController::class, "destroy"])->name("eve
 Route::get("/artists", [ArtistController::class, "index"])->name("artists.index");
 Route::get("/artists/create", [ArtistController::class, "create"])->name("artists.create");
 Route::post("/artists", [ArtistController::class, "store"])->name("artists.store");
+Route::get("/artists/{artist}/edit", [ArtistController::class, "edit"])->name("artists.edit");
+Route::put("/artists/{artist}", [ArtistController::class, "update"])->name("artists.update");
