@@ -27,6 +27,11 @@
                     <td>{{ ucfirst($artist->status) }}</td>
                     <td>
                         <a href="{{route('artists.edit', $artist->id)}}">Editar</a>
+                        <form action="{{route('artists.destroy', $artist->id)}}" method="post">
+                        @csrf
+                        @method("delete")
+                        <input type="submit" value="Excluir">
+                    </form>
                     </td>
                 </tr>
             @endforeach
