@@ -20,3 +20,4 @@ Route::get("/artists/create", [ArtistController::class, "create"])->name("artist
 Route::post("/artists", [ArtistController::class, "store"])->name("artists.store");
 Route::get("/artists/{artist}/edit", [ArtistController::class, "edit"])->name("artists.edit");
 Route::put("/artists/{artist}", [ArtistController::class, "update"])->name("artists.update");
+Route::delete("/artists/{artist}", [Artistcontroller::class, "destroy"])->name("artists.destroy");
