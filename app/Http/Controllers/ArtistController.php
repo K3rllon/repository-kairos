@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\no;
 use Illuminate\Http\Request;
+use App\Models\Artist;
 
 class ArtistController extends Controller
 {
@@ -12,7 +13,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        $artists = Artist::all();
+        return view("artists.index", compact("artists"));
     }
 
     /**
@@ -20,7 +22,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        //
+        return view("artists.create");
     }
 
     /**
@@ -28,7 +30,9 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Artist::create($request->all());
+
+        return redirect()->route("artists.index");
     }
 
     /**

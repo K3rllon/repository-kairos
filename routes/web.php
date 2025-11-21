@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ArtistController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,4 +15,6 @@ Route::get("/events/{event}/edit", [EventController::class, "edit"])->name("even
 Route::put("/events/{event}", [EventController::class, "update"])->name("events.update");
 Route::delete("/events/{event}", [EventController::class, "destroy"])->name("events.destroy");
 
-Route::get("/artists", [EventController::class, "index"])->name("artists.index");
+Route::get("/artists", [ArtistController::class, "index"])->name("artists.index");
+Route::get("/artists/create", [ArtistController::class, "create"])->name("artists.create");
+Route::post("/artists", [ArtistController::class, "store"])->name("artists.store");
