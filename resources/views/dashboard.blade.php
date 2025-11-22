@@ -25,8 +25,7 @@
 
         <nav>
             <ul class="flex gap-8 text-lg font-medium">
-                <li><a href="#" class="hover:opacity-80">Início</a></li>
-                <li><a href="#" class="hover:opacity-80">Eventos</a></li>
+                <li><a href="{{ route('events.index') }}" class="hover:opacity-80">Eventos</a></li>
                 <li><a href="#" class="hover:opacity-80">Locais</a></li>
                 <li><a href="#" class="hover:opacity-80">Artistas</a></li>
                 <li><a href="#" class="hover:opacity-80">Lotes</a></li>
