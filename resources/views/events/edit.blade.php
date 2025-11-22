@@ -1,44 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Event</title>
+    <title>Editar Evento - Kairós</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --kairos-purple: #56008F;
+            --kairos-purple-dark: #3D0066;
+            --kairos-amethyst: #230139;
+            --kairos-gray-light: #E1E1E1;
+        }
+    </style>
 </head>
-<body>
-    <h1>Edição do Evento</h1>
+<body class="bg-[var(--kairos-amethyst)] text-white min-h-screen flex flex-col items-center p-6">
 
-    <form action="{{ route('events.update', $event->id) }}" method="POST">
-        @csrf
-        @method("put")
-      
-        
-        <label>Nome:</label><br>
-        <input type="text" name="title" value="{{ $event->title }}" required><br><br>
+    <!-- LOGO + HEADER -->
+    <header class="flex items-center gap-4 mb-10">
+        <img src="{{ asset('imagens/logo-kairos.png') }}" alt="Kairós Logo" class="h-20 drop-shadow-xl">
+    </header>
 
-        <label>Descrição:</label><br>
-        <textarea name="description" rows="4">{{ $event->description }}</textarea><br><br>
+    <!-- CARD DO FORM -->
+    <div class="w-full max-w-2xl bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/20">
+        <h2 class="text-3xl font-bold mb-8 text-center text-[var(--kairos-gray-light)]">Editar Evento</h2>
 
-        <label>Data Inicial:</label><br>
-        <input type="date" name="start_date" value="{{ $event->start_date }}" required><br><br>
+        <form action="{{ route('events.update', $event->id) }}" method="POST" class="space-y-5">
+            @csrf
+            @method("put")
 
-        <label>Data de Termino:</label><br>
-        <input type="date" name="end_date" value="{{ $event->end_date }}"><br><br>
+            <!-- Nome -->
+            <div>
+                <label class="block font-semibold mb-1">Nome:</label>
+                <input type="text" name="title" value="{{ $event->title }}" required
+                       class="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">
+            </div>
 
-        <label>Local:</label><br>
-        <input type="text" name="location" value="{{ $event->location }}"><br><br>
+            <!-- Descrição -->
+            <div>
+                <label class="block font-semibold mb-1">Descrição:</label>
+                <textarea name="description" rows="4"
+                          class="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">{{ $event->description }}</textarea>
+            </div>
 
-        <label>Status:</label><br>
-        <select name="status" value="{{ $event->status }}">
-            <option value="ativo">Ativo</option>
-            <option value="encerrado">Encerrado</option>
-            <option value="cancelado">Cancelado</option>
-        </select><br><br>
+            <!-- Data Inicial e Término -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block font-semibold mb-1">Data Inicial:</label>
+                    <input type="date" name="start_date" value="{{ $event->start_date }}" required
+                           class="w-full p-3 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Data de Término:</label>
+                    <input type="date" name="end_date" value="{{ $event->end_date }}"
+                           class="w-full p-3 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">
+                </div>
+            </div>
 
-        <button type="submit">Editar Evento</button>
-    </form>
+            <!-- Local -->
+            <div>
+                <label class="block font-semibold mb-1">Local:</label>
+                <input type="text" name="location" value="{{ $event->location }}"
+                       class="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">
+            </div>
 
-    <br>
-    <a href="{{ route('events.index') }}">Voltar</a>
+            <!-- Status -->
+            <div>
+                <label class="block font-semibold mb-1">Status:</label>
+                <select name="status"
+                        class="w-full p-3 rounded-lg bg-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[var(--kairos-purple)]">
+                    <option value="ativo" {{ $event->status == 'ativo' ? 'selected' : '' }}>Ativo</option>
+                    <option value="encerrado" {{ $event->status == 'encerrado' ? 'selected' : '' }}>Encerrado</option>
+                    <option value="cancelado" {{ $event->status == 'cancelado' ? 'selected' : '' }}>Cancelado</option>
+                </select>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="flex justify-between items-center mt-6">
+                <a href="{{ route('events.index') }}"
+                   class="px-6 py-3 rounded-xl bg-gray-600 hover:bg-gray-700 transition font-semibold shadow">
+                    Voltar
+                </a>
+                <button type="submit"
+                        class="px-6 py-3 rounded-xl bg-[var(--kairos-purple)] hover:bg-[var(--kairos-purple-dark)] transition font-semibold shadow">
+                    Atualizar Evento
+                </button>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
