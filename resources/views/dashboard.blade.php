@@ -88,7 +88,6 @@
                         <th class="px-4 py-4 text-left font-medium">Data Inicial</th>
                         <th class="px-4 py-4 text-left font-medium">Local</th>
                         <th class="px-4 py-4 text-left font-medium">Status</th>
-                        <th class="px-4 py-4 text-center font-medium">Ações</th>
                     </tr>
                 </thead>
 
@@ -100,26 +99,6 @@
                         <td class="px-4 py-4">{{ $event->start_date }}</td>
                         <td class="px-4 py-4">{{ $event->location }}</td>
                         <td class="px-4 py-4">{{ ucfirst($event->status) }}</td>
-
-                        <td class="px-4 py-4 flex items-center gap-3 justify-center">
-
-                            <a href="{{ route('events.edit', $event->id) }}"
-                                class="px-4 py-2 rounded-lg bg-[var(--kairos-purple)] text-white hover:bg-[var(--kairos-purple-dark)] transition shadow">
-                                Editar
-                            </a>
-
-                            <form action="{{ route('events.destroy', $event->id) }}" method="post"
-                                    onsubmit="return confirm('Deseja mesmo excluir este evento?')">
-                                @csrf
-                                @method('delete')
-
-                                <button type="submit"
-                                        class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition shadow">
-                                    Excluir
-                                </button>
-                            </form>
-
-                        </td>
                     </tr>
                     @endforeach
 
