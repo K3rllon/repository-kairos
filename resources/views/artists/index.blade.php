@@ -17,7 +17,6 @@
 </head>
 <body class="bg-[var(--kairos-amethyst)] text-white min-h-screen px-6 py-10">
 
-    <!-- CABEÇALHO COM LOGO E BOTÃO VOLTAR -->
     <header class="max-w-5xl mx-auto flex justify-between items-center mb-10">
         <div class="flex items-center gap-3">
             <img src="{{ asset('imagens/logo-kairos.png') }}" class="h-14" alt="Logo Kairós">
@@ -29,16 +28,13 @@
         </a>
     </header>
 
-    <!-- CARD PRINCIPAL -->
     <main class="max-w-5xl mx-auto bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-white/10">
 
-        <!-- BANNER -->
         <div 
             class="max-w-5xl mx-auto h-52 rounded-2xl mb-10 shadow-2xl bg-cover bg-center"
             style="background-image: url('{{ asset('imagens/artists-banner.jpg') }}');">
         </div>
 
-        <!-- TÍTULO + BOTÃO NOVO -->
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-semibold tracking-wide">Lista de Artistas e Palestrantes</h2>
 
@@ -48,7 +44,6 @@
             </a>
         </div>
 
-        <!-- TABELA -->
         <div class="overflow-x-auto">
             <table class="w-full border border-white/10 rounded-xl overflow-hidden">
                 <thead class="bg-[var(--kairos-purple)] text-white">
