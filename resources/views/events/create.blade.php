@@ -18,7 +18,7 @@
 
     <!-- LOGO + HEADER -->
     <header class="flex items-center gap-4 mb-10">
-        <img src="{{ asset('imagens/logo-kairos.png') }}" alt="Kairós Logo" class="h-20 drop-shadow-xl">
+        <img src="{{ asset('imagens/logo.png') }}" alt="Kairós Logo" class="h-20 drop-shadow-xl">
     </header>
 
     <!-- CARD DO FORM -->
