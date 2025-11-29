@@ -22,7 +22,7 @@ class TicketLotController extends Controller
      */
     public function create()
     {
-        //
+        return view("tickets.create");
     }
 
     /**
@@ -30,7 +30,8 @@ class TicketLotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create($request->all());
+        return redirect()->route("tickets.index");
     }
 
     /**
@@ -46,7 +47,8 @@ class TicketLotController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tickets = Ticket::findOrFail($id);
+        return view("tickets.edit", compact("tickets"));
     }
 
     /**
@@ -54,7 +56,9 @@ class TicketLotController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tickets = Ticket::findOrFail($id);
+        $tickets->update($request->all());
+        return redirect()->route("tickets.index");
     }
 
     /**
@@ -62,6 +66,8 @@ class TicketLotController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tickets = Ticket::findOrFail($id);
+        $tickets->delete();
+        return redirect()->route("tickets.index");
     }
 }
