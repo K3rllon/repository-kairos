@@ -19,7 +19,7 @@
 
 <body class="bg-[var(--kairos-amethyst)] text-white min-h-screen px-6 py-10">
 
-    <!-- CABEÇALHO -->
+    <!-- CABEÇALHO COM LOGO E BOTÃO VOLTAR -->
     <header class="max-w-5xl mx-auto flex justify-between items-center mb-10">
         <div class="flex items-center gap-3">
             <img src="{{ asset('imagens/logo-kairos.png') }}" class="h-14" alt="Logo Kairós">
@@ -37,13 +37,13 @@
         <!-- BANNER -->
         <div 
             class="max-w-5xl mx-auto h-52 rounded-2xl mb-10 shadow-2xl bg-cover bg-center"
-            style="background-image: url('{{ asset('imagens/event-banner.jpg') }}');">
+            style="background-image: url('{{ asset('imagens/banner-ticket.jpg') }}');">
         </div>
 
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-3xl font-semibold tracking-wide">Lista de Tickets</h2>
 
-            <a href="#"
+            <a href="{{ route('tickets.create') }}"
                class="bg-[var(--kairos-purple)] hover:bg-[var(--kairos-purple-dark)] transition px-6 py-3 rounded-xl text-white font-semibold shadow-lg">
                 + Novo Ticket
             </a>
@@ -58,12 +58,14 @@
                         <th class="px-4 py-4 text-left font-medium">Quantidade</th>
                         <th class="px-4 py-4 text-left font-medium">Início</th>
                         <th class="px-4 py-4 text-left font-medium">Fim</th>
+                        <th class="px-4 py-4 text-center font-medium">Ações</th>
                     </tr>
                 </thead>
 
                 <tbody class="bg-white text-black">
                     @foreach ($tickets as $ticket)
                         <tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+
                             <td class="px-4 py-4">{{ $ticket->nome }}</td>
 
                             <td class="px-4 py-4">
@@ -79,16 +81,28 @@
                             <td class="px-4 py-4">
                                 {{ \Carbon\Carbon::parse($ticket->fim)->format('d/m/Y') }}
                             </td>
-                        </tr>
-                    @endforeach
 
-                    @if ($tickets->count() === 0)
-                        <tr>
-                            <td colspan="5" class="px-4 py-6 text-center text-gray-500">
-                                Nenhum ticket cadastrado.
+                            <td class="px-4 py-4 flex items-center gap-3 justify-center">
+
+                                <a href="{{ route('tickets.edit', $ticket->id) }}"
+                                   class="px-4 py-2 rounded-lg bg-[var(--kairos-purple)] text-white hover:bg-[var(--kairos-purple-dark)] transition shadow">
+                                    Editar
+                                </a>
+
+                                <form action="{{ route('tickets.destroy', $ticket->id) }}" method="post"
+                                      onsubmit="return confirm('Deseja mesmo excluir este ticket?')">
+                                    @csrf
+                                    @method('delete')
+
+                                    <button type="submit"
+                                            class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition shadow">
+                                        Excluir
+                                    </button>
+                                </form>
+
                             </td>
                         </tr>
-                    @endif
+                    @endforeach
                 </tbody>
 
             </table>
