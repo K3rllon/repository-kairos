@@ -32,6 +32,11 @@ Route::put("/artists/{artist}", [ArtistController::class, "update"])->name("arti
 Route::delete("/artists/{artist}", [ArtistController::class, "destroy"])->name("artists.destroy");
 
 Route::get("/tickets", [TicketLotController::class, "index"])->name("tickets.index");
+Route::get("/tickets/create", [TicketLotController::class, "create"])->name("tickets.create");
+Route::post("/tickets", [TicketLotController::class, "store"])->name("tickets.store");
+Route::get("/tickets/{ticket}/edit", [TicketLotController::class, "edit"])->name("tickets.edit");
+Route::put("/tickets/{ticket}", [TicketLotController::class, "update"])->name("tickets.update");
+Route::delete("/tickets/{ticket}", [TicketLotController::class, "destroy"])->name("tickets.destroy");
 
 require __DIR__.'/auth.php';
 
