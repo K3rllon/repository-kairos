@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Artist;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $events = Event::all();
-        return view('dashboard', compact('events'));
+        $artists = Artist::all();
+        return view('dashboard', compact('events','artists'));
     }
 }
