@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TicketLotController;
 
-Route::get('/dashboard', [HomeController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -29,6 +30,8 @@ Route::post("/artists", [ArtistController::class, "store"])->name("artists.store
 Route::get("/artists/{artist}/edit", [ArtistController::class, "edit"])->name("artists.edit");
 Route::put("/artists/{artist}", [ArtistController::class, "update"])->name("artists.update");
 Route::delete("/artists/{artist}", [ArtistController::class, "destroy"])->name("artists.destroy");
+
+Route::get("/tickets", [TicketLotController::class, "index"])->name("tickets.index");
 
 require __DIR__.'/auth.php';
 
